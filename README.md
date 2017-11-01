@@ -34,7 +34,9 @@ D10 ———    5 (RESET)
 
 Check your config:
 Check that avrdude can connect to the USBasp In the windows command window, type
-avrdude -c avrisp -P <prot of arduino> -b 19200 -p m8 -v
+
+COM3 is my COM port of the arduino
+avrdude -c avrisp -P COM3 -b 19200 -p m8 -v
 
 If everything is connected correctly you should see a load of information about the USBasp board that you are about to program, like this
 
@@ -82,7 +84,10 @@ SCK period      : 0.1 us
 avrdude: AVR device initialized and ready to accept instructions
 
 BACKUP:
-avrdude -c avrisp -P <prot of arduino> -b 19200 -p m8 -U flash:r:original_firmware.bin:r
+avrdude -c avrisp -P COM3 -b 19200 -p m8 -U flash:r:original_firmware.bin:r
 
 FLASH:
-avrdude -c avrisp -P COM3 -b 19200 -p m8 -U flash:w:c:\usbasp.atmega8.2011-05-28.hex
+avrdude -c avrisp -P COM3 -b 19200 -p m8 -U flash:w:usbasp.atmega8.2011-05-28.hex
+
+FUSES:
+avrdude -c avrisp -P COM3 -b 19200 -p m8 -B 200 -U hfuse:w:0xC9:m -U lfuse:w:0xEF:m
